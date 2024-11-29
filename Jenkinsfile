@@ -61,9 +61,12 @@ pipeline {
                     sh '''
                         ssh $DEPLOY_USER@$DEPLOY_HOST "sudo mkdir -p ${REPO_DIR}"
                         rsync -avz package/ $DEPLOY_USER@$DEPLOY_HOST:${REPO_DIR}
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "ls -l ${REPO_DIR} && cd ${REPO_DIR}"
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "npm install && echo 'Dependencies installed successfully'"
-
+                        ssh $DEPLOY_USER@$DEPLOY_HOST "ls -l ${REPO_DIR} && "
+                        ssh $DEPLOY_USER@$DEPLOY_HOST "
+                        cd ${REPO_DIR} && 
+                        npm install && 
+                        echo 'Dependencies installed successfully'
+                        "
                     '''
                 }
             }
