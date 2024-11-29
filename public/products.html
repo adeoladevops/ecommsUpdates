@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products - E-commerce Web App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="account">
+      <a href="#" onclick="showAccountOptions()">Account</a>
+      <div id="account-options" class="account-options">
+        <p><a href="#" onclick="setUser('User1032')">User1032</a></p>
+        <p><a href="#" onclick="showAdminLogin()">Admin</a></p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="products">
+      <h2>Product Catalog</h2>
+      <div id="product-list"></div>
+      <form id="add-product-form">
+        <h3>Add New Product</h3>
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="product-name"><br><br>
+        <label for="product-price">Product Price:</label>
+        <input type="number" id="product-price" name="product-price"><br><br>
+        <button type="submit">Add to Cart</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 E-commerce Web App</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
