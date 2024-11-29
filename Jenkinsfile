@@ -43,6 +43,7 @@ pipeline {
                 sh '''
                     mkdir -p package
                     cp package.json package/
+                    cp server.js package/
                     if [ -d build ]; then
                         cp -R build/ package/
                     else
