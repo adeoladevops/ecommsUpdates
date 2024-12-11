@@ -97,10 +97,10 @@ EOF
                         ssh $DEPLOY_USER@$DEPLOY_HOST "sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/ecomms"
 
                         # Test nginx configuration
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo nginx -t"
+                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo nginx -t && sudo systemctl reload nginx"
 
                         # Reload nginx to apply changes
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo systemctl reload nginx && npm start"
+                        ssh $DEPLOY_USER@$DEPLOY_HOST "cd /var/www/ecomms/ && npm start"
                     '''
                 }
             }
