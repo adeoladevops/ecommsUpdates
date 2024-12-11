@@ -100,7 +100,7 @@ EOF
                         ssh $DEPLOY_USER@$DEPLOY_HOST "sudo nginx -t"
 
                         # Reload nginx to apply changes
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo systemctl reload nginx"
+                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo systemctl reload nginx && npm start"
                     '''
                 }
             }
