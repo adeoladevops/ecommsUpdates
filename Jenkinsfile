@@ -91,17 +91,24 @@ server {
     }
 }
 EOF
-                        "
+                            "
 
-                        # Enable the nginx configuration
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/ecomms"
+                            # Enable the nginx configuration
+                            ssh $DEPLOY_USER@$DEPLOY_HOST "sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/ecomms"
 
-                        # Test nginx configuration
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "sudo nginx -t && sudo systemctl reload nginx"
+                            # Test nginx configuration and Reload nginx to apply changes
+                            ssh $DEPLOY_USER@$DEPLOY_HOST "sudo nginx -t && sudo systemctl reload nginx"
 
-                        # Reload nginx to apply changes
-                        ssh $DEPLOY_USER@$DEPLOY_HOST "cd /var/www/ecomms/ && npm start"
-                    '''
+                            # Check if the application is running and start it if not
+                            ssh $DEPLOY_USER@$DEPLOY_HOST "
+                            if sudo netstat -tuln | grep ':3000'; then
+                                echo 'Application is already running on port 3000.';
+                            else
+                                echo 'Starting application...';
+                                cd /var/www/ecomms/ && npm start & echo 'Application started successfully.';
+                            fi
+                            "
+                        '''
                 }
             }
         }
