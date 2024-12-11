@@ -101,12 +101,13 @@ EOF
 
                             # Check if the application is running and start it if not
                             ssh $DEPLOY_USER@$DEPLOY_HOST "
-                            if sudo netstat -tuln | grep ':3000'; then
+                            if sudo lsof -i:3000; then
                                 echo 'Application is already running on port 3000.';
                             else
                                 echo 'Starting application...';
-                                cd /var/www/ecomms/ && npm start & echo 'Application started successfully.';
+                                cd /var/www/ecomms/ && nohup npm start &> /dev/null & echo 'Application started successfully.';
                             fi
+                            echo 'Job completed successfully.';
                             "
                         '''
                 }
