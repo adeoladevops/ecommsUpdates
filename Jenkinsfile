@@ -45,7 +45,7 @@ pipeline {
                     cp package.json package/
                     cp server.js package/
                     if [ -d build ]; then
-                        cp -R build/ package/
+                        cp -R build/ package/public/
                     else
                         echo "No build directory; copying app files"
                         cp -R *.js *.json public/ views/ package/
