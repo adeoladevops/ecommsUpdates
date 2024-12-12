@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Cloning the repository...'
-                git branch: 'master', url: 'https://github.com/adeoladevops/ecomms.git'
+                git branch: 'master', url: 'https://github.com/adeoladevops/ecommsUpdates.git'
                 sh 'ls -l'
             }
         }
